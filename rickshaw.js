@@ -82,7 +82,7 @@ angular.module('angular-rickshaw', [])
 
                     function updateData() {
                         if (graph && settings) {
-                            settings.series = scope.series; //_splice({ data: scope.series, series: settings.series });
+                            graph.series = scope.series; //_splice({ data: scope.series, series: settings.series });
                             redraw();
                         }
                     }
