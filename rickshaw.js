@@ -82,7 +82,7 @@ angular.module('angular-rickshaw', [])
 
                     function updateData() {
                         if (graph && settings) {
-                            graph.series = scope.series; //_splice({ data: scope.series, series: settings.series });
+                            _splice({ data: scope.series, series: settings.series });
                             redraw();
                         }
                     }
@@ -250,7 +250,10 @@ angular.module('angular-rickshaw', [])
                     }, true);
                     var seriesWatch = scope.$watchCollection('series', function(newValue, oldValue) {
                         if (!angular.equals(newValue, oldValue)) {
-                            updateData();
+                            graph = undefined;
+                            xAxis = undefined;
+                            yAxis = undefined;
+                            updateConfiguration();
                         }
                     }, true);
                     var featuresWatch = scope.$watch('features', function(newValue, oldValue) {
